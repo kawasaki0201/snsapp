@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // useParamsをインポート
-import Rightbar from "../../components/rightbar/Rightbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import TimeLine from "../../components/timeline/TimeLine";
 import Topbar from "../../components/topbar/Topbar";
@@ -64,7 +63,7 @@ export default function Profile() {
           </div>
           <div className="profileRightBottom">
             <TimeLine username={username} /> {/* usernameをpropsとして渡す */}
-            <Rightbar user={user} />
+            {/* <Rightbar user={user} /> */}
           </div>
         </div>
       </div>

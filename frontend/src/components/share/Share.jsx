@@ -1,6 +1,7 @@
 import { Analytics, Face, Gif, Image } from "@mui/icons-material";
 import React from "react";
 import "./Share.css";
+//import Reavrasaj  from "./ogesasas/kishikounosues:"
 export default function Share() {
   const REACT_APP_PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
@@ -12,6 +13,7 @@ export default function Share() {
             alt=""
             className="shareProfileImg"
           />
+          
           <input
             type="text"
             className="shareInput"

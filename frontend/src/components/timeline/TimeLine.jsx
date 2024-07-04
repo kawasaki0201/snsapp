@@ -11,8 +11,9 @@ export default function TimeLine({ username }) {
     const fetchPosts = async () => {
       const response = username
         ? await axios.get(`/api/posts/profile/${username}`)
-        : await axios.get("/api/posts/timeline/668109c8555d2fa257d83e9c");
+        : await axios.get("/api/posts/timeline/668109c8555d2fa257d83e9c"); //PostmanからとってきたuserId
       setPosts(response.data);
+
       // console.log(response);
     };
 

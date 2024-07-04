@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import { Users } from "../../dummyDate";
 import CloseFriend from "../closeFriend/CloseFriend";
 import "./Sidebar.css";
+
 export default function Sidebar() {
+  const currentUser = Users[0]; // 例としてkishi（最初のユーザを使用）
+  const username = currentUser.username;
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -21,7 +25,12 @@ export default function Sidebar() {
             </li> */}
           <li className="sidebarListItem">
             <Notifications className="sidebarIcon" />
-            <span className="sidebarListItemText">メッセージ</span>
+            <Link
+              to="/message"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              <span className="sidebarListItemText">メッセージ</span>
+            </Link>
           </li>
           {/* <li className="sidebarListItem">
                 <Bookmark className="sidebarIcon" />
@@ -30,7 +39,7 @@ export default function Sidebar() {
           <li className="sidebarListItem">
             <Person className="sidebarIcon" />
             <Link
-              to="/profile/:username"
+              to={`/profile/${username}`}
               style={{ textDecoration: "none", color: "black" }}
             >
               <span className="sidebarListItemText">プロフィール</span>
