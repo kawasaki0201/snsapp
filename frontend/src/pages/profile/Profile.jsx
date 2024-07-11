@@ -49,7 +49,7 @@ export default function Profile() {
               />
               <img
                 src={
-                  user.profilePicture ||
+                  REACT_APP_PUBLIC_FOLDER + user.profilePicture ||
                   REACT_APP_PUBLIC_FOLDER + "/person/noAvatar.png"
                 }
                 alt=""

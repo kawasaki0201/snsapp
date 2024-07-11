@@ -1,28 +1,59 @@
 import { Analytics, Face, Gif, Image } from "@mui/icons-material";
-import React from "react";
+import axios from "axios";
+import React, { useContext, useRef, useState } from "react";
+import { AuthContext } from "../../state/AuthContext";
 import "./Share.css";
 //import Reavrasaj  from "./ogesasas/kishikounosues:"
 export default function Share() {
   const REACT_APP_PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { user } = useContext(AuthContext);
+  const desc = useRef();
+  const [isPosting, setIsPosting] = useState(false); // 投稿中かどうかの状態
+  const [isPosted, setIsPosted] = useState(false); // 投稿成功後の状態
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsPosting(true); // 投稿中に設定
+
+    const newPost = {
+      userId: user._id,
+      desc: desc.current.value,
+    };
+    try {
+      await axios.post("/api/posts", newPost);
+      setIsPosting(false); // 投稿完了に設定
+      setIsPosted(true); // 投稿成功に設定
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+      setIsPosting(false); // 投稿失敗に設定
+    }
+  };
+
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
           <img
-            src={REACT_APP_PUBLIC_FOLDER + "/person/noAvatar.png"}
+            src={
+              user.profilePicture
+                ? REACT_APP_PUBLIC_FOLDER + user.profilePicture
+                : REACT_APP_PUBLIC_FOLDER + "/person/noAvatar.png"
+            }
             alt=""
             className="shareProfileImg"
           />
-          
+
           <input
             type="text"
             className="shareInput"
             placeholder="今何してる？"
+            ref={desc}
           />
         </div>
         <hr className="shareHr" />
 
-        <div className="shareButtons">
+        <form className="shareButtons" onSubmit={(e) => handleSubmit(e)}>
           <div className="shareOptions">
             <Image className="shareIcon" htmlColor="blue" />
             <span className="shareOptionText">写真</span>
@@ -39,8 +70,14 @@ export default function Share() {
             <Analytics className="shareIcon" htmlColor="red" />
             <span className="shareOptionText">投票</span>
           </div>
-          <button className="shareButton">投稿</button>
-        </div>
+          <button
+            className={`shareButton ${isPosted ? "posted" : ""}`}
+            type="submit"
+            disabled={isPosting} // 投稿中はボタンを無効化
+          >
+            {isPosting ? "投稿中..." : "投稿"}
+          </button>
+        </form>
       </div>
     </div>
   );

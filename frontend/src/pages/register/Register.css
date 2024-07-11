@@ -28,6 +28,17 @@
   }
 }
 
+@keyframes fall {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .login {
   width: 100vw;
   height: 100vh;
@@ -61,7 +72,12 @@
   font-weight: 800;
   color: #41428b;
   margin-bottom: 10px;
-  animation: fadeInSlideUp 1s ease-out;
+}
+
+.logoLetter {
+  display: inline-block;
+  opacity: 0; /* 初期状態では見えない */
+  animation: fall 0.5s forwards;
 }
 
 .loginDesc {
@@ -86,6 +102,14 @@
   animation: fadeInSlideUp 1.5s ease-out;
 }
 
+.loginMsg {
+  font-size: 24px;
+  color: #417a8b;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
 .loginInput {
   height: 50px;
   border-radius: 10px;
@@ -97,7 +121,7 @@
 
 .loginInput:focus {
   outline: none;
-  border-color: #41428b;
+  border-color: #5ab7c7;
   box-shadow: 0 0 5px rgba(65, 66, 139, 0.5);
 }
 
@@ -105,7 +129,7 @@
   height: 50px;
   border-radius: 10px;
   border: none;
-  background-color: #41428b;
+  background-color: #68d7db;
   color: white;
   font-size: 20px;
   font-weight: 500;
@@ -114,7 +138,7 @@
 }
 
 .loginButton:hover {
-  background-color: #33336b;
+  background-color: #2a89f6;
   transform: translateY(-3px);
 }
 
@@ -129,7 +153,7 @@
   height: 50px;
   border-radius: 10px;
   border: none;
-  background-color: #3c8b50;
+  background-color: #b59ad8;
   color: white;
   font-size: 20px;
   font-weight: 500;
@@ -139,6 +163,106 @@
 }
 
 .loginRegisterButton:hover {
-  background-color: #2a5b37;
+  background-color: #b165d4;
   transform: translateY(-3px);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .loginWrapper {
+    width: 90%;
+    height: 80%;
+    flex-direction: column;
+    border-radius: 10px;
+  }
+
+  .loginLeft,
+  .loginRight {
+    width: 100%;
+    flex: none;
+  }
+
+  .loginLogo {
+    font-size: 36px;
+  }
+
+  .loginDesc {
+    font-size: 18px;
+  }
+
+  .loginBox {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .loginMsg {
+    font-size: 20px;
+  }
+
+  .loginInput {
+    height: 45px;
+    font-size: 16px;
+  }
+
+  .loginButton,
+  .loginRegisterButton {
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loginWrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .loginLogo {
+    font-size: 30px;
+  }
+
+  .loginDesc {
+    font-size: 16px;
+  }
+
+  .loginMsg {
+    font-size: 18px;
+  }
+
+  .loginInput {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .loginButton,
+  .loginRegisterButton {
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+.logoLetter:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.logoLetter:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.logoLetter:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.logoLetter:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.logoLetter:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.logoLetter:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.logoLetter:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.logoLetter:nth-child(8) {
+  animation-delay: 0.8s;
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useRef, useState } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import TypingEffect from "react-typing-effect";
 import backgroundImage from "./R.jpg"; // 画像をインポート
 import "./Register.css";
@@ -11,6 +11,7 @@ export default function Register() {
   const password = useRef();
   const passwordConfirmation = useRef();
   const [redirect, setRedirect] = useState(false);
+  const navigate = useNavigate(); // useNavigateフックを使用
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +34,17 @@ export default function Register() {
     }
   };
 
+  const handleLogin = () => {
+    navigate("/login"); // /loginにリダイレクト
+  };
+
+  useEffect(() => {
+    const letters = document.querySelectorAll(".logoLetter");
+    letters.forEach((letter, index) => {
+      letter.style.animationDelay = `${index * 0.3}s`;
+    });
+  }, []);
+
   if (redirect) {
     return <Navigate to="/login" />;
   }
@@ -46,7 +58,13 @@ export default function Register() {
       {/* インラインスタイルで背景画像を設定 */}
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">SNS</h3>
+          <h3 className="loginLogo">
+            {"Sanalysis".split("").map((char, index) => (
+              <span key={index} className="logoLetter">
+                {char}
+              </span>
+            ))}
+          </h3>
           <TypingEffect
             className="loginDesc"
             text={["ネトプロの世界へようこそ"]}
@@ -92,7 +110,13 @@ export default function Register() {
             <button className="loginButton" type="submit">
               サインアップ
             </button>
-            <button className="loginRegisterButton">ログイン</button>
+            <button
+              type="button"
+              className="loginRegisterButton"
+              onClick={handleLogin}
+            >
+              ログイン
+            </button>
           </form>
         </div>
       </div>

@@ -3,16 +3,14 @@ import AuthReducer from "./AuthReducer";
 
 //最初のユーザー状態の定義
 const initialState = {
-  // user: null, //ログインしてないですね。
+  //user: null, //ログインしてないですね。
   user: {
     _id: "668109c8555d2fa257d83e9c",
     username: "kishi",
     email: "kishi@ms.dendai.ac.jp",
     password: "1021",
-    profilePicture: "",
-
+    profilePicture: "/person/1.jpeg",
     followers: [],
-
     followings: [],
     isAdmin: false,
   },
