@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import "./Bunseki.css"; // カスタムCSSファイルをインポート
 
 export default function Bunseki() {
     const [analysisResults, setAnalysisResults] = useState([]);
