@@ -1,14 +1,8 @@
-import { useContext } from "react";
-import {
-  Navigate,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from "react-router-dom";
+import React, { useContext } from "react";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import Message1 from "./pages/messages/Message1"; // Message1 のインポート
-import Messages from "./pages/messages/Messages";
+import Message1 from "./pages/messages/Message1";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 import { AuthContext } from "./state/AuthContext";
@@ -21,14 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-        <Route
-          path="/register"
-          element={user ? <Navigate to="/" /> : <Register />}
-        />
+        <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
         <Route path="/profile/:username" element={<Profile />} />
-        <Route path="/message" element={<Messages />} />
-        <Route path="/message1" element={<Message1 />} />{" "}
-        {/* Message1 のルート */}
+        <Route path="/message1" element={<Message1 />} />
       </Routes>
     </Router>
   );

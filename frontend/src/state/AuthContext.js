@@ -3,17 +3,20 @@ import AuthReducer from "./AuthReducer";
 
 //最初のユーザー状態の定義
 const initialState = {
-  //user: null, //ログインしてないですね。
-  user: {
-    _id: "668109c8555d2fa257d83e9c",
-    username: "kishi",
-    email: "kishi@ms.dendai.ac.jp",
-    password: "1021",
-    profilePicture: "/person/1.jpeg",
-    followers: [],
-    followings: [],
-    isAdmin: false,
-  },
+  user: null, //ログインしてないですね。
+  // user: {
+  //   _id: "668764f4a78b4a3ecbb31c73",
+  //   username: "kawasaki",
+  //   email: "kawasaki@gmail.com",
+  //   password: "kawasaki",
+  //   profilePicture: "",
+
+  //   followers: [],
+
+  //   followings: [],
+  //   isAdmin: false,
+  // },
+
 
   //JSON.parse(localStorage.getItem("user")) || null,
   isFetching: false, //ログインしようともしてないですね。
