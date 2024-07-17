@@ -3,19 +3,15 @@ import { useNavigate } from "react-router-dom"; // useNavigateをインポート
 import { loginCall } from "../../actionCalls";
 import { AuthContext } from "../../state/AuthContext";
 import "./Login.css";
-
 export default function Login() {
   const email = useRef();
   const password = useRef();
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate(); // useNavigateフックを使用
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     // console.log(email.current.value);
     // console.log(password.current.value);
-
     loginCall(
       {
         email: email.current.value,
@@ -24,11 +20,9 @@ export default function Login() {
       dispatch
     );
   };
-
   const handleRegister = () => {
     navigate("/register"); // /registerにリダイレクト
   };
-
   console.log(user);
   return (
     <div className="login">
@@ -37,7 +31,6 @@ export default function Login() {
           <h3>Sanalysis</h3>
           <span className="loginDesc">ネトプロの世界へようこそ</span>
         </div>
-
         <div className="loginRight">
           <form className="loginBox" onSubmit={(e) => handleSubmit(e)}>
             <p className="loginMsg">ログインはこちら</p>
@@ -56,7 +49,6 @@ export default function Login() {
               minLength="4"
               ref={password}
             />
-
             <button className="loginButton">Login</button>
             <span className="loginForgot">パスワードを忘れた方へ</span>
             <button

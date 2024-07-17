@@ -13,7 +13,7 @@ export default function Message1() {
   const [inputMessage, setInputMessage] = useState("");
   const [sender, setSender] = useState("あなた");
   const [newSenderName, setNewSenderName] = useState("");
-  const [senders, setSenders] = useState(["岸", "川﨑", "小池"]);
+  const [senders, setSenders] = useState(["あなた", "岸", "川﨑", "小池"]);
 
   useEffect(() => {
     socket.on("connect", () => {
